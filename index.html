@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<title>丫头，我爱你</title>	    
     <link type="text/css" rel="stylesheet" href="css/default.css">
-		
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.2.0.js"> </script>
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript" src="js/jscex.min.js"></script>
 	<script type="text/javascript" src="js/jscex-parser.js"></script>
@@ -23,8 +23,8 @@
 </head>
 <body>
 	<!--===音乐：一次就好——王卫彪======================================-->
-	<audio autoplay>
-			<source src="./music.mp3"/>
+	<audio id="video" autoplay>
+			<source src="music.mp3"/>
 	</audio>  
 	
 	<!--==============================================================-->
@@ -59,7 +59,7 @@
 		       <a>爱彪哥的傻丫头</a> 与 <a>爱傻丫头的彪哥</a> 在一起的
 		           <div id="clock"></div>
 		   </div>
-		    <canvas id="canvas" width="1100" height="680"></canvas>
+		    <canvas id="canvas" width="100vw" height="100vh"></canvas>
 	    </div>
             
     </div>
@@ -68,6 +68,18 @@
 	<!--==========================================================-->
     <script>
 	    (function(){
+			wx.config({
+				// 配置信息, 即使不正确也能使用 wx.ready
+				debug: false,
+				appId: 'gh_1a8c118653f8',
+				timestamp: 1,
+				nonceStr: '',
+				signature: '',
+				jsApiList: []
+			});
+			wx.ready(function() {
+				$("#video")[0].play();
+			});
 	        var canvas = $('#canvas');
 	        if (!canvas[0].getContext) {
 	            $("#error").show();
